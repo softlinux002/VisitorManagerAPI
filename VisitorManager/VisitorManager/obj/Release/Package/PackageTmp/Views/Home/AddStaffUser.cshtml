@@ -1,0 +1,225 @@
+﻿
+@{
+    ViewBag.Title = "AddStaffUser";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<script src="~/Content/Userside/js/Users.js"></script>
+<script src="~/Content/Userside/js/CommonPage.js"></script>
+<!-- Page header -->
+<div class="page-header page-header-default">
+    <div class="page-header-content">
+        <div class="page-title">
+            <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Forms</span> - Basic Inputs</h4>
+        </div>
+        <div class="heading-elements">
+            <div class="heading-btn-group">
+                <a href="#" class="btn btn-link btn-float has-text"><i class="icon-bars-alt text-primary"></i><span>Statistics</span></a>
+                <a href="#" class="btn btn-link btn-float has-text"><i class="icon-calculator text-primary"></i> <span>Invoices</span></a>
+                <a href="#" class="btn btn-link btn-float has-text"><i class="icon-calendar5 text-primary"></i> <span>Schedule</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="index.html"><i class="icon-home2 position-left"></i> Home</a></li>
+            <li><a href="form_inputs_basic.html">Forms</a></li>
+            <li class="active">Basic inputs</li>
+        </ul>
+        <ul class="breadcrumb-elements">
+            <li><a href="#"><i class="icon-comment-discussion position-left"></i> Support</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="icon-gear position-left"></i>
+                    Settings
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a href="#"><i class="icon-user-lock"></i> Account security</a></li>
+                    <li><a href="#"><i class="icon-statistics"></i> Analytics</a></li>
+                    <li><a href="#"><i class="icon-accessibility"></i> Accessibility</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#"><i class="icon-gear"></i> All settings</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- /page header -->
+<!-- Primary modal -->
+<div id="modal_theme_primary" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h6 class="modal-title">Primary header</h6>
+            </div>
+            <div class="modal-body">
+                <h6 class="text-semibold">Text in a modal</h6>
+                <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                <hr>
+                <h6 class="text-semibold">Another paragraph</h6>
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="userInfo.DeleteUserDetail()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /primary modal -->
+<!-- Content area -->
+<div class="content">
+    <!-- Form horizontal -->
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h5 class="panel-title">Visitor Manager</h5>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li><a data-action="collapse"></a></li>
+                    <li><a data-action="reload"></a></li>
+                    <li><a data-action="close"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal">
+                <fieldset class="content-group">
+                    <legend class="text-bold">Add Staff</legend>
+                    @if (Session["Type"] != null)
+                    {
+                        if (Session["Type"].ToString() == "SuperAdmin")
+                        {
+                            <div class="form-group">
+                                <label class="control-label col-lg-2">Select Admin</label>
+                                <div class="col-lg-10">
+                                    <select id="ddl_Admin" class="form-control"></select>
+                                    <span class="help-block" style="color:red;" id="lbl_Admin"></span>
+                                </div>
+                            </div>
+                        }
+                    }
+                    <div class="form-group">
+                        <label class="control-label col-lg-1">Staff ID</label>
+                        <div class="col-lg-4">
+                            <input type="text" class="form-control" id="txt_Id" value="@ViewBag.staffId" readonly />
+                            <span class="help-block"></span>
+                        </div>
+                        <label class="control-label col-lg-1">Designation</label>
+                        <div class="col-lg-4">
+                            <input type="text" class="form-control" id="txt_Designation" />
+                            <span class="help-block" style="color:red;" id="lbl_Designation"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-1">Staff Name</label>
+                        <div class="col-lg-4">
+                            <input type="text" class="form-control" id="txt_StaffName" />
+                            <span class="help-block" style="color:red;" id="lbl_StaffName"></span>
+                        </div>
+                        <label class="control-label col-lg-1">Email</label>
+                        <div class="col-lg-4">
+                            <input type="text" class="form-control" id="txt_Email" />
+                            <span class="help-block" style="color:red;" id="lbl_Email"></span>
+                        </div>
+
+
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-1">Mobile</label>
+                        <div class="col-lg-4">
+                            <input type="text" class="form-control" id="txt_mobile1" />
+                            <span class="help-block" style="color:red;" id="lbl_mobile1"></span>
+                        </div>
+                        <label class="control-label col-lg-1">Mobile 2</label>
+                        <div class="col-lg-4">
+                            <input type="text" class="form-control" id="txt_mobile2" />
+                            <span class="help-block" style="color:red;" id="spn_State"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-1">Address</label>
+                        <div class="col-lg-4">
+                            <input type="text" class="form-control" id="txt_Address">
+                            <span class="help-block" style="color:red;" id="lbl_Address"></span>
+                        </div>
+                        <label class="control-label col-lg-1">State</label>
+                        <div class="col-lg-4">
+                            <input type="text" class="form-control" id="txt_State">
+                            <span class="help-block" style="color:red;" id="lbl_State"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-1">City</label>
+                        <div class="col-lg-4">
+                            <input type="text" class="form-control" id="txt_City">
+                            <span class="help-block" style="color:red;" id="lbl_City"></span>
+                        </div>
+
+                        <label class="control-label col-lg-1">Zip Code</label>
+                        <div class="col-lg-4">
+                            <input type="text" class="form-control" id="txt_ZipCode">
+                            <span class="help-block" style="color:red;" id="lbl_ZipCode"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-1">Comment</label>
+                        <div class="col-lg-4">
+                            <input type="text" class="form-control" id="txt_Comment">
+                        </div>
+
+                        <label class="control-label col-lg-1"></label>
+                        <div class="col-lg-4">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-1">Password</label>
+                        <div class="col-lg-4">
+                            <input type="text" class="form-control" id="txt_Password">
+                            <span class="help-block" style="color:red;" id="lbl_Password"></span>
+                        </div>
+
+                        <label class="control-label col-lg-1">Confirm Password</label>
+                        <div class="col-lg-4">
+                            <input type="text" class="form-control" id="txt_Confirm">
+                            <span class="help-block" style="color:red;" id="lbl_Confirm"></span>
+                        </div>
+                    </div>
+
+                </fieldset>
+
+                <div class="text-right">
+                    <button type="submit" class="btn btn-primary" onclick="userInfo.InserUserDetails()">Submit <i class="icon-arrow-right14 position-right"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- /form horizontal -->
+
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h5 class="panel-title">Page length options</h5>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li><a data-action="collapse"></a></li>
+                    <li><a data-action="reload"></a></li>
+                    <li><a data-action="close"></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="userTablePartial">
+            @Html.Partial("_UserTablePartial")
+        </div>
+    </div>
+    <!-- /page length options -->
+
+</div>
+<!-- /content area -->

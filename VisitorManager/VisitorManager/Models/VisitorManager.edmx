@@ -1,0 +1,915 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GatekeeperrrrModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_Administrator">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PackageId" Type="int" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="20" />
+          <Property Name="City" Type="nvarchar" MaxLength="40" />
+          <Property Name="State" Type="nvarchar" MaxLength="40" />
+          <Property Name="Country" Type="nvarchar" MaxLength="40" />
+          <Property Name="ZipCode" Type="nvarchar" MaxLength="15" />
+          <Property Name="Type" Type="nvarchar" MaxLength="20" />
+          <Property Name="Status" Type="nvarchar" MaxLength="20" />
+          <Property Name="AdminId" Type="nvarchar" MaxLength="30" />
+          <Property Name="AuthCode" Type="nvarchar" MaxLength="500" />
+          <Property Name="ExpiryDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="country_id" Type="int" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="iso_code_2" Type="nvarchar" MaxLength="10" />
+          <Property Name="iso_code_3" Type="nvarchar" MaxLength="10" />
+          <Property Name="address_format" Type="nvarchar" MaxLength="100" />
+          <Property Name="postcode_required" Type="nvarchar" MaxLength="20" />
+          <Property Name="status" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tbl_Gatekeeper">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdminId" Type="int" Nullable="false" />
+          <Property Name="GatekeeperId" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="45" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="30" />
+          <Property Name="State" Type="nvarchar" MaxLength="30" />
+          <Property Name="City" Type="nvarchar" MaxLength="30" />
+          <Property Name="ZipCode" Type="nvarchar" MaxLength="30" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AuthCode" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tbl_Package">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PackageName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="NoOfVisitorSupported" Type="float" Nullable="false" />
+          <Property Name="HalfYearlyPrice" Type="float" Nullable="false" />
+          <Property Name="AnnuallyPrice" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Payment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdminId" Type="int" Nullable="false" />
+          <Property Name="AdminAppId" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="PaymentId" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Guid" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Token" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="PayerID" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Amount" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="tbl_StaffUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StaffId" Type="nvarchar" MaxLength="20" />
+          <Property Name="AdminId" Type="int" />
+          <Property Name="StaffName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile1" Type="nvarchar" MaxLength="15" />
+          <Property Name="Mobile2" Type="nvarchar" MaxLength="15" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="ZipCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="500" />
+          <Property Name="UserType" Type="nvarchar" MaxLength="20" />
+          <Property Name="Designation" Type="nvarchar" MaxLength="40" />
+          <Property Name="OTP" Type="nvarchar" MaxLength="10" />
+          <Property Name="AuthCode" Type="uniqueidentifier" />
+          <Property Name="Password" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="tbl_state">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="zone_id" Type="int" />
+          <Property Name="country_id" Type="int" />
+          <Property Name="name" Type="nvarchar" MaxLength="200" />
+          <Property Name="code" Type="nvarchar" MaxLength="50" />
+          <Property Name="status" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_Visitor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdminId" Type="int" />
+          <Property Name="VisitorName" Type="nvarchar" MaxLength="50" />
+          <Property Name="VisitorType" Type="nvarchar" MaxLength="50" />
+          <Property Name="TotalVisitor" Type="int" />
+          <Property Name="WhomToVisit" Type="nvarchar" MaxLength="50" />
+          <Property Name="VhicleType" Type="nvarchar" MaxLength="50" />
+          <Property Name="VhicleNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="TimeIn" Type="nvarchar" MaxLength="20" />
+          <Property Name="TimeOut" Type="nvarchar" MaxLength="20" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="StaffId" Type="int" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="20" />
+          <Property Name="Status" Type="nvarchar" MaxLength="40" />
+          <Property Name="OTP" Type="int" />
+          <Property Name="Purpose" Type="nvarchar" MaxLength="500" />
+          <Property Name="GatekeeperId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Gatekeeperrrr.dbo.LoginView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="LoginView">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="PackageOrAdminId" Type="int" />
+          <Property Name="SName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="30" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="20" />
+          <Property Name="Type" Type="nvarchar" MaxLength="20" />
+          <Property Name="Status" Type="nvarchar" MaxLength="20" />
+          <Property Name="AuthCode" Type="uniqueidentifier" />
+          <Property Name="Mobile2" Type="nvarchar" MaxLength="15" />
+          <Property Name="UserType" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK_tbl_Gatekeeper_tbl_Administrator">
+          <End Role="tbl_Administrator" Type="Self.tbl_Administrator" Multiplicity="1" />
+          <End Role="tbl_Gatekeeper" Type="Self.tbl_Gatekeeper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Administrator">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Gatekeeper">
+              <PropertyRef Name="AdminId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Payment_tbl_Administrator">
+          <End Role="tbl_Administrator" Type="Self.tbl_Administrator" Multiplicity="1" />
+          <End Role="tbl_Payment" Type="Self.tbl_Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Administrator">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Payment">
+              <PropertyRef Name="AdminId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_StaffUser_tbl_Administrator">
+          <End Role="tbl_Administrator" Type="Self.tbl_Administrator" Multiplicity="0..1" />
+          <End Role="tbl_StaffUser" Type="Self.tbl_StaffUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Administrator">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_StaffUser">
+              <PropertyRef Name="AdminId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Visitor_tbl_Administrator">
+          <End Role="tbl_Administrator" Type="Self.tbl_Administrator" Multiplicity="0..1" />
+          <End Role="tbl_Visitor" Type="Self.tbl_Visitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Administrator">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Visitor">
+              <PropertyRef Name="AdminId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="sp_GetStaffByGatekeeperId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GatekeeperId" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_GetStaffByNameAndMobile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="AdminId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_GetTotalVisitorForToday" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Date" Type="varchar" Mode="In" />
+          <Parameter Name="AdminId" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_GetVisitorByStaffId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Date" Type="varchar" Mode="In" />
+          <Parameter Name="StaffId" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_GetVisitorsByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Date" Type="varchar" Mode="In" />
+          <Parameter Name="AdminId" Type="int" Mode="In" />
+          <Parameter Name="GatekeeperId" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_GetVisitorsForAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Date" Type="varchar" Mode="In" />
+          <Parameter Name="VisitorName" Type="nvarchar" Mode="In" />
+          <Parameter Name="VehicleNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="AdminId" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="GatekeeperrrrModelStoreContainer">
+          <EntitySet Name="tbl_Administrator" EntityType="Self.tbl_Administrator" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_country" EntityType="Self.tbl_country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Gatekeeper" EntityType="Self.tbl_Gatekeeper" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Package" EntityType="Self.tbl_Package" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Payment" EntityType="Self.tbl_Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_StaffUser" EntityType="Self.tbl_StaffUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_state" EntityType="Self.tbl_state" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Visitor" EntityType="Self.tbl_Visitor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoginView" EntityType="Self.LoginView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [LoginView].[Id] AS [Id], 
+    [LoginView].[PackageOrAdminId] AS [PackageOrAdminId], 
+    [LoginView].[SName] AS [SName], 
+    [LoginView].[UserName] AS [UserName], 
+    [LoginView].[UserId] AS [UserId], 
+    [LoginView].[Password] AS [Password], 
+    [LoginView].[Email] AS [Email], 
+    [LoginView].[Mobile] AS [Mobile], 
+    [LoginView].[Type] AS [Type], 
+    [LoginView].[Status] AS [Status], 
+    [LoginView].[AuthCode] AS [AuthCode], 
+    [LoginView].[Mobile2] AS [Mobile2], 
+    [LoginView].[UserType] AS [UserType]
+    FROM [dbo].[LoginView] AS [LoginView]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_tbl_Gatekeeper_tbl_Administrator" Association="Self.FK_tbl_Gatekeeper_tbl_Administrator">
+            <End Role="tbl_Administrator" EntitySet="tbl_Administrator" />
+            <End Role="tbl_Gatekeeper" EntitySet="tbl_Gatekeeper" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Payment_tbl_Administrator" Association="Self.FK_tbl_Payment_tbl_Administrator">
+            <End Role="tbl_Administrator" EntitySet="tbl_Administrator" />
+            <End Role="tbl_Payment" EntitySet="tbl_Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_StaffUser_tbl_Administrator" Association="Self.FK_tbl_StaffUser_tbl_Administrator">
+            <End Role="tbl_Administrator" EntitySet="tbl_Administrator" />
+            <End Role="tbl_StaffUser" EntitySet="tbl_StaffUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Visitor_tbl_Administrator" Association="Self.FK_tbl_Visitor_tbl_Administrator">
+            <End Role="tbl_Administrator" EntitySet="tbl_Administrator" />
+            <End Role="tbl_Visitor" EntitySet="tbl_Visitor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GatekeeperrrrModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_Administrator">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PackageId" Type="Int32" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="ZipCode" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AdminId" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="AuthCode" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_Gatekeeper" Relationship="Self.FK_tbl_Gatekeeper_tbl_Administrator" FromRole="tbl_Administrator" ToRole="tbl_Gatekeeper" />
+          <NavigationProperty Name="tbl_Payment" Relationship="Self.FK_tbl_Payment_tbl_Administrator" FromRole="tbl_Administrator" ToRole="tbl_Payment" />
+          <NavigationProperty Name="tbl_StaffUser" Relationship="Self.FK_tbl_StaffUser_tbl_Administrator" FromRole="tbl_Administrator" ToRole="tbl_StaffUser" />
+          <NavigationProperty Name="tbl_Visitor" Relationship="Self.FK_tbl_Visitor_tbl_Administrator" FromRole="tbl_Administrator" ToRole="tbl_Visitor" />
+        </EntityType>
+        <EntityType Name="tbl_country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="country_id" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="iso_code_2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="iso_code_3" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="address_format" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="postcode_required" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_Gatekeeper">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdminId" Type="Int32" Nullable="false" />
+          <Property Name="GatekeeperId" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="ZipCode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AuthCode" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Administrator" Relationship="Self.FK_tbl_Gatekeeper_tbl_Administrator" FromRole="tbl_Gatekeeper" ToRole="tbl_Administrator" />
+        </EntityType>
+        <EntityType Name="tbl_Payment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdminId" Type="Int32" Nullable="false" />
+          <Property Name="AdminAppId" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PaymentId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Guid" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Token" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PayerID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Amount" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Administrator" Relationship="Self.FK_tbl_Payment_tbl_Administrator" FromRole="tbl_Payment" ToRole="tbl_Administrator" />
+        </EntityType>
+        <EntityType Name="tbl_StaffUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StaffId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AdminId" Type="Int32" />
+          <Property Name="StaffName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile1" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile2" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Comment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UserType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Designation" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="OTP" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="AuthCode" Type="Guid" />
+          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Administrator" Relationship="Self.FK_tbl_StaffUser_tbl_Administrator" FromRole="tbl_StaffUser" ToRole="tbl_Administrator" />
+        </EntityType>
+        <EntityType Name="tbl_state">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="zone_id" Type="Int32" />
+          <Property Name="country_id" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_Visitor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdminId" Type="Int32" />
+          <Property Name="VisitorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VisitorType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TotalVisitor" Type="Int32" />
+          <Property Name="WhomToVisit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VhicleType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VhicleNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TimeIn" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TimeOut" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StaffId" Type="Int32" />
+          <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="OTP" Type="Int32" />
+          <Property Name="Purpose" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="GatekeeperId" Type="Int32" />
+          <NavigationProperty Name="tbl_Administrator" Relationship="Self.FK_tbl_Visitor_tbl_Administrator" FromRole="tbl_Visitor" ToRole="tbl_Administrator" />
+        </EntityType>
+        <Association Name="FK_tbl_Gatekeeper_tbl_Administrator">
+          <End Role="tbl_Administrator" Type="Self.tbl_Administrator" Multiplicity="1" />
+          <End Role="tbl_Gatekeeper" Type="Self.tbl_Gatekeeper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Administrator">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Gatekeeper">
+              <PropertyRef Name="AdminId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Payment_tbl_Administrator">
+          <End Role="tbl_Administrator" Type="Self.tbl_Administrator" Multiplicity="1" />
+          <End Role="tbl_Payment" Type="Self.tbl_Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Administrator">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Payment">
+              <PropertyRef Name="AdminId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_StaffUser_tbl_Administrator">
+          <End Role="tbl_Administrator" Type="Self.tbl_Administrator" Multiplicity="0..1" />
+          <End Role="tbl_StaffUser" Type="Self.tbl_StaffUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Administrator">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_StaffUser">
+              <PropertyRef Name="AdminId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Visitor_tbl_Administrator">
+          <End Role="tbl_Administrator" Type="Self.tbl_Administrator" Multiplicity="0..1" />
+          <End Role="tbl_Visitor" Type="Self.tbl_Visitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Administrator">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Visitor">
+              <PropertyRef Name="AdminId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GatekeeperrrrEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_Administrator" EntityType="Self.tbl_Administrator" />
+          <EntitySet Name="tbl_country" EntityType="Self.tbl_country" />
+          <EntitySet Name="tbl_Gatekeeper" EntityType="Self.tbl_Gatekeeper" />
+          <EntitySet Name="tbl_Payment" EntityType="Self.tbl_Payment" />
+          <EntitySet Name="tbl_StaffUser" EntityType="Self.tbl_StaffUser" />
+          <EntitySet Name="tbl_state" EntityType="Self.tbl_state" />
+          <EntitySet Name="tbl_Visitor" EntityType="Self.tbl_Visitor" />
+          <AssociationSet Name="FK_tbl_Gatekeeper_tbl_Administrator" Association="Self.FK_tbl_Gatekeeper_tbl_Administrator">
+            <End Role="tbl_Administrator" EntitySet="tbl_Administrator" />
+            <End Role="tbl_Gatekeeper" EntitySet="tbl_Gatekeeper" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Payment_tbl_Administrator" Association="Self.FK_tbl_Payment_tbl_Administrator">
+            <End Role="tbl_Administrator" EntitySet="tbl_Administrator" />
+            <End Role="tbl_Payment" EntitySet="tbl_Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_StaffUser_tbl_Administrator" Association="Self.FK_tbl_StaffUser_tbl_Administrator">
+            <End Role="tbl_Administrator" EntitySet="tbl_Administrator" />
+            <End Role="tbl_StaffUser" EntitySet="tbl_StaffUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Visitor_tbl_Administrator" Association="Self.FK_tbl_Visitor_tbl_Administrator">
+            <End Role="tbl_Administrator" EntitySet="tbl_Administrator" />
+            <End Role="tbl_Visitor" EntitySet="tbl_Visitor" />
+          </AssociationSet>
+          <FunctionImport Name="sp_GetStaffByNameAndMobile" ReturnType="Collection(GatekeeperrrrModel.sp_GetStaffByNameAndMobile_Result)">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="AdminId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetVisitorByStaffId" ReturnType="Collection(GatekeeperrrrModel.sp_GetVisitorByStaffId_Result)">
+            <Parameter Name="Date" Mode="In" Type="String" />
+            <Parameter Name="StaffId" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetVisitorsByDate" ReturnType="Collection(GatekeeperrrrModel.sp_GetVisitorsByDate_Result)">
+            <Parameter Name="Date" Mode="In" Type="String" />
+            <Parameter Name="AdminId" Mode="In" Type="Int32" />
+            <Parameter Name="GatekeeperId" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetVisitorsForAdmin" ReturnType="Collection(GatekeeperrrrModel.sp_GetVisitorsForAdmin_Result)">
+            <Parameter Name="Date" Mode="In" Type="String" />
+            <Parameter Name="VisitorName" Mode="In" Type="String" />
+            <Parameter Name="VehicleNumber" Mode="In" Type="String" />
+            <Parameter Name="AdminId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="tbl_Package" EntityType="GatekeeperrrrModel.tbl_Package" />
+          <FunctionImport Name="sp_GetTotalVisitorForToday" ReturnType="Collection(Int32)">
+            <Parameter Name="Date" Mode="In" Type="String" />
+            <Parameter Name="AdminId" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="LoginViews" EntityType="GatekeeperrrrModel.LoginView" />
+          <FunctionImport Name="sp_GetStaffByGatekeeperId" ReturnType="Collection(GatekeeperrrrModel.sp_GetStaffByGatekeeperId_Result)">
+            <Parameter Name="GatekeeperId" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="sp_GetStaffByNameAndMobile_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="StaffId" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="AdminId" Nullable="true" />
+          <Property Type="String" Name="StaffName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Mobile1" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Mobile2" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="State" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ZipCode" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Comment" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="UserType" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Designation" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="OTP" Nullable="true" MaxLength="10" />
+          <Property Type="Guid" Name="AuthCode" Nullable="true" />
+          <Property Type="String" Name="Password" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="sp_GetVisitorByStaffId_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="AdminId" Nullable="true" />
+          <Property Type="String" Name="VisitorName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="VisitorType" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="TotalVisitor" Nullable="true" />
+          <Property Type="String" Name="WhomToVisit" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="VhicleType" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="VhicleNumber" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="TimeIn" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="TimeOut" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="Date" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Image" Nullable="true" />
+          <Property Type="Int32" Name="StaffId" Nullable="true" />
+          <Property Type="String" Name="Mobile" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="40" />
+          <Property Type="Int32" Name="OTP" Nullable="true" />
+          <Property Type="String" Name="Purpose" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="GatekeeperId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_GetVisitorsByDate_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="AdminId" Nullable="true" />
+          <Property Type="String" Name="VisitorName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="VisitorType" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="TotalVisitor" Nullable="true" />
+          <Property Type="String" Name="WhomToVisit" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="VhicleType" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="VhicleNumber" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="TimeIn" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="TimeOut" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="Date" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Image" Nullable="true" />
+          <Property Type="Int32" Name="StaffId" Nullable="true" />
+          <Property Type="String" Name="Mobile" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="40" />
+          <Property Type="Int32" Name="OTP" Nullable="true" />
+          <Property Type="String" Name="Purpose" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="GatekeeperId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_GetVisitorsForAdmin_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="AdminId" Nullable="true" />
+          <Property Type="String" Name="VisitorName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="VisitorType" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="TotalVisitor" Nullable="true" />
+          <Property Type="String" Name="WhomToVisit" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="VhicleType" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="VhicleNumber" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="TimeIn" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="TimeOut" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="Date" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Image" Nullable="true" />
+          <Property Type="Int32" Name="StaffId" Nullable="true" />
+          <Property Type="String" Name="Mobile" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="40" />
+          <Property Type="Int32" Name="OTP" Nullable="true" />
+          <Property Type="String" Name="Purpose" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="GatekeeperId" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="tbl_Package">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PackageName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NoOfVisitorSupported" Type="Double" Nullable="false" />
+          <Property Name="HalfYearlyPrice" Type="Double" Nullable="false" />
+          <Property Name="AnnuallyPrice" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LoginView">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="PackageOrAdminId" Type="Int32" />
+          <Property Name="SName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AuthCode" Type="Guid" />
+          <Property Name="Mobile2" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="UserType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="sp_GetStaffByGatekeeperId_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="StaffName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GatekeeperrrrModelStoreContainer" CdmEntityContainer="GatekeeperrrrEntities">
+          <EntitySetMapping Name="tbl_Administrator">
+            <EntityTypeMapping TypeName="GatekeeperrrrModel.tbl_Administrator">
+              <MappingFragment StoreEntitySet="tbl_Administrator">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PackageId" ColumnName="PackageId" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="AuthCode" ColumnName="AuthCode" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_country">
+            <EntityTypeMapping TypeName="GatekeeperrrrModel.tbl_country">
+              <MappingFragment StoreEntitySet="tbl_country">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="iso_code_2" ColumnName="iso_code_2" />
+                <ScalarProperty Name="iso_code_3" ColumnName="iso_code_3" />
+                <ScalarProperty Name="address_format" ColumnName="address_format" />
+                <ScalarProperty Name="postcode_required" ColumnName="postcode_required" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Gatekeeper">
+            <EntityTypeMapping TypeName="GatekeeperrrrModel.tbl_Gatekeeper">
+              <MappingFragment StoreEntitySet="tbl_Gatekeeper">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="GatekeeperId" ColumnName="GatekeeperId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="AuthCode" ColumnName="AuthCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Payment">
+            <EntityTypeMapping TypeName="GatekeeperrrrModel.tbl_Payment">
+              <MappingFragment StoreEntitySet="tbl_Payment">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="AdminAppId" ColumnName="AdminAppId" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="PayerID" ColumnName="PayerID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_StaffUser">
+            <EntityTypeMapping TypeName="GatekeeperrrrModel.tbl_StaffUser">
+              <MappingFragment StoreEntitySet="tbl_StaffUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="StaffName" ColumnName="StaffName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile1" ColumnName="Mobile1" />
+                <ScalarProperty Name="Mobile2" ColumnName="Mobile2" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="OTP" ColumnName="OTP" />
+                <ScalarProperty Name="AuthCode" ColumnName="AuthCode" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_state">
+            <EntityTypeMapping TypeName="GatekeeperrrrModel.tbl_state">
+              <MappingFragment StoreEntitySet="tbl_state">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="zone_id" ColumnName="zone_id" />
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Visitor">
+            <EntityTypeMapping TypeName="GatekeeperrrrModel.tbl_Visitor">
+              <MappingFragment StoreEntitySet="tbl_Visitor">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="VisitorName" ColumnName="VisitorName" />
+                <ScalarProperty Name="VisitorType" ColumnName="VisitorType" />
+                <ScalarProperty Name="TotalVisitor" ColumnName="TotalVisitor" />
+                <ScalarProperty Name="WhomToVisit" ColumnName="WhomToVisit" />
+                <ScalarProperty Name="VhicleType" ColumnName="VhicleType" />
+                <ScalarProperty Name="VhicleNumber" ColumnName="VhicleNumber" />
+                <ScalarProperty Name="TimeIn" ColumnName="TimeIn" />
+                <ScalarProperty Name="TimeOut" ColumnName="TimeOut" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="OTP" ColumnName="OTP" />
+                <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+                <ScalarProperty Name="GatekeeperId" ColumnName="GatekeeperId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetStaffByNameAndMobile" FunctionName="GatekeeperrrrModel.Store.sp_GetStaffByNameAndMobile">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GatekeeperrrrModel.sp_GetStaffByNameAndMobile_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="StaffName" ColumnName="StaffName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile1" ColumnName="Mobile1" />
+                <ScalarProperty Name="Mobile2" ColumnName="Mobile2" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="OTP" ColumnName="OTP" />
+                <ScalarProperty Name="AuthCode" ColumnName="AuthCode" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetVisitorByStaffId" FunctionName="GatekeeperrrrModel.Store.sp_GetVisitorByStaffId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GatekeeperrrrModel.sp_GetVisitorByStaffId_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="VisitorName" ColumnName="VisitorName" />
+                <ScalarProperty Name="VisitorType" ColumnName="VisitorType" />
+                <ScalarProperty Name="TotalVisitor" ColumnName="TotalVisitor" />
+                <ScalarProperty Name="WhomToVisit" ColumnName="WhomToVisit" />
+                <ScalarProperty Name="VhicleType" ColumnName="VhicleType" />
+                <ScalarProperty Name="VhicleNumber" ColumnName="VhicleNumber" />
+                <ScalarProperty Name="TimeIn" ColumnName="TimeIn" />
+                <ScalarProperty Name="TimeOut" ColumnName="TimeOut" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="OTP" ColumnName="OTP" />
+                <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+                <ScalarProperty Name="GatekeeperId" ColumnName="GatekeeperId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetVisitorsByDate" FunctionName="GatekeeperrrrModel.Store.sp_GetVisitorsByDate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GatekeeperrrrModel.sp_GetVisitorsByDate_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="VisitorName" ColumnName="VisitorName" />
+                <ScalarProperty Name="VisitorType" ColumnName="VisitorType" />
+                <ScalarProperty Name="TotalVisitor" ColumnName="TotalVisitor" />
+                <ScalarProperty Name="WhomToVisit" ColumnName="WhomToVisit" />
+                <ScalarProperty Name="VhicleType" ColumnName="VhicleType" />
+                <ScalarProperty Name="VhicleNumber" ColumnName="VhicleNumber" />
+                <ScalarProperty Name="TimeIn" ColumnName="TimeIn" />
+                <ScalarProperty Name="TimeOut" ColumnName="TimeOut" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="OTP" ColumnName="OTP" />
+                <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+                <ScalarProperty Name="GatekeeperId" ColumnName="GatekeeperId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetVisitorsForAdmin" FunctionName="GatekeeperrrrModel.Store.sp_GetVisitorsForAdmin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GatekeeperrrrModel.sp_GetVisitorsForAdmin_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="VisitorName" ColumnName="VisitorName" />
+                <ScalarProperty Name="VisitorType" ColumnName="VisitorType" />
+                <ScalarProperty Name="TotalVisitor" ColumnName="TotalVisitor" />
+                <ScalarProperty Name="WhomToVisit" ColumnName="WhomToVisit" />
+                <ScalarProperty Name="VhicleType" ColumnName="VhicleType" />
+                <ScalarProperty Name="VhicleNumber" ColumnName="VhicleNumber" />
+                <ScalarProperty Name="TimeIn" ColumnName="TimeIn" />
+                <ScalarProperty Name="TimeOut" ColumnName="TimeOut" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="OTP" ColumnName="OTP" />
+                <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+                <ScalarProperty Name="GatekeeperId" ColumnName="GatekeeperId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="tbl_Package">
+            <EntityTypeMapping TypeName="GatekeeperrrrModel.tbl_Package">
+              <MappingFragment StoreEntitySet="tbl_Package">
+                <ScalarProperty Name="AnnuallyPrice" ColumnName="AnnuallyPrice" />
+                <ScalarProperty Name="HalfYearlyPrice" ColumnName="HalfYearlyPrice" />
+                <ScalarProperty Name="NoOfVisitorSupported" ColumnName="NoOfVisitorSupported" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PackageName" ColumnName="PackageName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetTotalVisitorForToday" FunctionName="GatekeeperrrrModel.Store.sp_GetTotalVisitorForToday" />
+          <EntitySetMapping Name="LoginViews">
+            <EntityTypeMapping TypeName="GatekeeperrrrModel.LoginView">
+              <MappingFragment StoreEntitySet="LoginView">
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="Mobile2" ColumnName="Mobile2" />
+                <ScalarProperty Name="AuthCode" ColumnName="AuthCode" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="SName" ColumnName="SName" />
+                <ScalarProperty Name="PackageOrAdminId" ColumnName="PackageOrAdminId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetStaffByGatekeeperId" FunctionName="GatekeeperrrrModel.Store.sp_GetStaffByGatekeeperId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GatekeeperrrrModel.sp_GetStaffByGatekeeperId_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StaffName" ColumnName="StaffName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

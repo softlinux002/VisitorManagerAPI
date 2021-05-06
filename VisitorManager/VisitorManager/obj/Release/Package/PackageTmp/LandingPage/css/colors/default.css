@@ -1,0 +1,138 @@
+/* Theme Name: Zairo - Responsive bootsrap 4 Landing Page Template
+   Author: Coderthemes
+   Version: 1.0.0
+   Created: May 2018
+   File Description: Default template color
+*/
+
+
+.text-custom,
+.btn-outline,
+.open > .dropdown-toggle.btn-custom,
+.btn-custom-white,
+.btn-outline-white:hover,
+.btn-outline-white:focus,
+.btn-outline-white:active,
+.btn-outline-white.active,
+.btn-outline-white.focus,
+.btn-outline-white:active,
+.btn-outline-white:focus,
+.btn-outline-white:hover,
+.open > .dropdown-toggle.btn-outline-white,
+.btn-custom-white:hover,
+.btn-custom-white:focus,
+.btn-custom-white:active,
+.btn-custom-white.active,
+.btn-custom-white.focus,
+.btn-custom-white:active,
+.btn-custom-white:focus,
+.btn-custom-white:hover,
+.open > .dropdown-toggle.btn-custom-white,
+.navbar-btn,
+.navbar-custom .navbar-nav li.active a,
+.navbar-custom .navbar-nav li a:hover,
+.navbar-custom .navbar-nav li a:active,
+.nav-sticky.navbar-custom .navbar-nav li.active a,
+.nav-sticky.navbar-custom .navbar-nav li a:hover,
+.nav-sticky.navbar-custom .navbar-nav li a:active,
+.busi-team-icons li a:hover
+{
+    color: #13ce67;
+}
+
+.bg-custom,
+.btn-custom,
+.navbar-btn:hover,
+.play-icon,
+.container-filter li a:hover,
+.container-filter li a.active,
+.busi-container-filter li a:hover,
+.busi-container-filter li a.active,
+.footer-startup .footer-icons li a:hover,
+.app-team-social-icon a:hover
+{
+	background: #13ce67;
+}
+
+
+.btn-custom,
+.btn-custom:hover,
+.btn-custom:focus,
+.btn-custom:active,
+.btn-custom.active,
+.btn-custom.focus,
+.btn-custom:active,
+.btn-custom:focus,
+.btn-custom:hover,
+.open > .dropdown-toggle.btn-custom,
+.container-filter li a:hover,
+.container-filter li a.active,
+.footer-startup .footer-icons li a:hover,
+.busi-container-filter li a:hover,
+.busi-container-filter li a.active,
+.app-team-social-icon a:hover{
+	border-color: #13ce67;
+}
+
+.app-border-right {
+    border-right: 3px solid #13ce67;
+}
+
+.app-border-left {
+    border-left: 3px solid #13ce67;
+}
+
+.arrow-right{
+    border-left: 14px solid #13ce67;
+}
+
+.arrow-left{
+    border-right: 14px solid #13ce67;
+}
+
+.startup-pricing-table-active {
+    border: 2px solid rgba(19, 206, 103, 0.4);
+    border-top: 16px solid rgba(19, 206, 103, 0.4);
+}
+
+.soft-team-content{
+    border-bottom: 2px solid #13ce67;
+}
+
+.navbar-btn {
+    background-color: rgba(19, 206, 103, 0.2);
+}
+
+.feautures-icon i,
+.app-testi-icon i,
+.services-icon:after,
+.busi-services-icon i{
+    background: #e1f5e9;
+}
+
+.agency-services-icon i,
+.testi-icon i{
+    color: #e1f5e9;
+}
+
+.btn-custom {
+    border-bottom: 3px solid #4baf78;
+}
+
+.btn-custom:hover,
+.btn-custom:focus,
+.btn-custom:active,
+.btn-custom.active,
+.btn-custom.focus,
+.btn-custom:active,
+.btn-custom:focus,
+.btn-custom:hover,
+.open > .dropdown-toggle.btn-custom {
+    background-color: #4baf78;
+    border-color: #4baf78;
+    border-bottom-color: #468863;
+}
+
+.spinner {
+  border-left: 5px solid #13ce67;
+}

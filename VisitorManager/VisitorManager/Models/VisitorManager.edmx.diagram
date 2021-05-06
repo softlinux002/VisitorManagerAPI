@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="50f8abbcf1404866a87b20f592206b25" Name="Diagram1">
+        <EntityTypeShape EntityType="GatekeeperrrrModel.tbl_Administrator" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GatekeeperrrrModel.tbl_country" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GatekeeperrrrModel.tbl_Gatekeeper" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GatekeeperrrrModel.tbl_Payment" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="GatekeeperrrrModel.tbl_StaffUser" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GatekeeperrrrModel.tbl_state" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GatekeeperrrrModel.tbl_Visitor" Width="1.5" PointX="3" PointY="14.875" IsExpanded="true" />
+        <AssociationConnector Association="GatekeeperrrrModel.FK_tbl_Gatekeeper_tbl_Administrator" ManuallyRouted="false" />
+        <AssociationConnector Association="GatekeeperrrrModel.FK_tbl_Payment_tbl_Administrator" ManuallyRouted="false" />
+        <AssociationConnector Association="GatekeeperrrrModel.FK_tbl_StaffUser_tbl_Administrator" ManuallyRouted="false" />
+        <AssociationConnector Association="GatekeeperrrrModel.FK_tbl_Visitor_tbl_Administrator" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="GatekeeperrrrModel.tbl_Package" Width="1.5" PointX="5.375" PointY="4.75" />
+        <EntityTypeShape EntityType="GatekeeperrrrModel.LoginView" Width="1.875" PointX="7.75" PointY="4.625" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

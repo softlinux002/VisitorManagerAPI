@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GatekeeperrrrModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_Administrator">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PackageId" Type="int" />
+    <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="20" />
+    <Property Name="City" Type="nvarchar" MaxLength="40" />
+    <Property Name="State" Type="nvarchar" MaxLength="40" />
+    <Property Name="Country" Type="nvarchar" MaxLength="40" />
+    <Property Name="ZipCode" Type="nvarchar" MaxLength="15" />
+    <Property Name="Type" Type="nvarchar" MaxLength="20" />
+    <Property Name="Status" Type="nvarchar" MaxLength="20" />
+    <Property Name="AdminId" Type="nvarchar" MaxLength="30" />
+    <Property Name="AuthCode" Type="nvarchar" MaxLength="500" />
+    <Property Name="ExpiryDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tbl_country">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="country_id" Type="int" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="iso_code_2" Type="nvarchar" MaxLength="10" />
+    <Property Name="iso_code_3" Type="nvarchar" MaxLength="10" />
+    <Property Name="address_format" Type="nvarchar" MaxLength="100" />
+    <Property Name="postcode_required" Type="nvarchar" MaxLength="20" />
+    <Property Name="status" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="tbl_Gatekeeper">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdminId" Type="int" Nullable="false" />
+    <Property Name="GatekeeperId" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="45" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Country" Type="nvarchar" MaxLength="30" />
+    <Property Name="State" Type="nvarchar" MaxLength="30" />
+    <Property Name="City" Type="nvarchar" MaxLength="30" />
+    <Property Name="ZipCode" Type="nvarchar" MaxLength="30" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AuthCode" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="tbl_Package">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PackageName" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="200" />
+    <Property Name="NoOfVisitorSupported" Type="float" Nullable="false" />
+    <Property Name="HalfYearlyPrice" Type="float" Nullable="false" />
+    <Property Name="AnnuallyPrice" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Payment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdminId" Type="int" Nullable="false" />
+    <Property Name="AdminAppId" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="PaymentId" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Guid" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Token" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="PayerID" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Amount" Type="nvarchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="tbl_StaffUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StaffId" Type="nvarchar" MaxLength="20" />
+    <Property Name="AdminId" Type="int" />
+    <Property Name="StaffName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Mobile1" Type="nvarchar" MaxLength="15" />
+    <Property Name="Mobile2" Type="nvarchar" MaxLength="15" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="State" Type="nvarchar" MaxLength="50" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+    <Property Name="ZipCode" Type="nvarchar" MaxLength="10" />
+    <Property Name="Comment" Type="nvarchar" MaxLength="500" />
+    <Property Name="UserType" Type="nvarchar" MaxLength="20" />
+    <Property Name="Designation" Type="nvarchar" MaxLength="40" />
+    <Property Name="OTP" Type="nvarchar" MaxLength="10" />
+    <Property Name="AuthCode" Type="uniqueidentifier" />
+    <Property Name="Password" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="tbl_state">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="zone_id" Type="int" />
+    <Property Name="country_id" Type="int" />
+    <Property Name="name" Type="nvarchar" MaxLength="200" />
+    <Property Name="code" Type="nvarchar" MaxLength="50" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_Visitor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdminId" Type="int" />
+    <Property Name="VisitorName" Type="nvarchar" MaxLength="50" />
+    <Property Name="VisitorType" Type="nvarchar" MaxLength="50" />
+    <Property Name="TotalVisitor" Type="int" />
+    <Property Name="WhomToVisit" Type="nvarchar" MaxLength="50" />
+    <Property Name="VhicleType" Type="nvarchar" MaxLength="50" />
+    <Property Name="VhicleNumber" Type="nvarchar" MaxLength="20" />
+    <Property Name="TimeIn" Type="nvarchar" MaxLength="20" />
+    <Property Name="TimeOut" Type="nvarchar" MaxLength="20" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="Image" Type="nvarchar(max)" />
+    <Property Name="StaffId" Type="int" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="20" />
+    <Property Name="Status" Type="nvarchar" MaxLength="40" />
+    <Property Name="OTP" Type="int" />
+    <Property Name="Purpose" Type="nvarchar" MaxLength="500" />
+    <Property Name="GatekeeperId" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Gatekeeperrrr.dbo.LoginView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="LoginView">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="PackageOrAdminId" Type="int" />
+    <Property Name="SName" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="30" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="20" />
+    <Property Name="Type" Type="nvarchar" MaxLength="20" />
+    <Property Name="Status" Type="nvarchar" MaxLength="20" />
+    <Property Name="AuthCode" Type="uniqueidentifier" />
+    <Property Name="Mobile2" Type="nvarchar" MaxLength="15" />
+    <Property Name="UserType" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <Association Name="FK_tbl_Gatekeeper_tbl_Administrator">
+    <End Role="tbl_Administrator" Type="Self.tbl_Administrator" Multiplicity="1" />
+    <End Role="tbl_Gatekeeper" Type="Self.tbl_Gatekeeper" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Administrator">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_Gatekeeper">
+        <PropertyRef Name="AdminId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Payment_tbl_Administrator">
+    <End Role="tbl_Administrator" Type="Self.tbl_Administrator" Multiplicity="1" />
+    <End Role="tbl_Payment" Type="Self.tbl_Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Administrator">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_Payment">
+        <PropertyRef Name="AdminId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_StaffUser_tbl_Administrator">
+    <End Role="tbl_Administrator" Type="Self.tbl_Administrator" Multiplicity="0..1" />
+    <End Role="tbl_StaffUser" Type="Self.tbl_StaffUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Administrator">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_StaffUser">
+        <PropertyRef Name="AdminId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Visitor_tbl_Administrator">
+    <End Role="tbl_Administrator" Type="Self.tbl_Administrator" Multiplicity="0..1" />
+    <End Role="tbl_Visitor" Type="Self.tbl_Visitor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Administrator">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_Visitor">
+        <PropertyRef Name="AdminId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="sp_GetStaffByNameAndMobile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="varchar" Mode="In" />
+    <Parameter Name="AdminId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GetTotalVisitorForToday" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Date" Type="varchar" Mode="In" />
+    <Parameter Name="AdminId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GetVisitorByStaffId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Date" Type="varchar" Mode="In" />
+    <Parameter Name="StaffId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GetVisitorsByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Date" Type="varchar" Mode="In" />
+    <Parameter Name="AdminId" Type="int" Mode="In" />
+    <Parameter Name="GatekeeperId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GetVisitorsForAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Date" Type="varchar" Mode="In" />
+    <Parameter Name="VisitorName" Type="nvarchar" Mode="In" />
+    <Parameter Name="VehicleNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="AdminId" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="GatekeeperrrrModelStoreContainer">
+    <EntitySet Name="tbl_Administrator" EntityType="Self.tbl_Administrator" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_country" EntityType="Self.tbl_country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Gatekeeper" EntityType="Self.tbl_Gatekeeper" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Package" EntityType="Self.tbl_Package" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Payment" EntityType="Self.tbl_Payment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_StaffUser" EntityType="Self.tbl_StaffUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_state" EntityType="Self.tbl_state" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Visitor" EntityType="Self.tbl_Visitor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoginView" EntityType="Self.LoginView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [LoginView].[Id] AS [Id], 
+    [LoginView].[PackageOrAdminId] AS [PackageOrAdminId], 
+    [LoginView].[SName] AS [SName], 
+    [LoginView].[UserName] AS [UserName], 
+    [LoginView].[UserId] AS [UserId], 
+    [LoginView].[Password] AS [Password], 
+    [LoginView].[Email] AS [Email], 
+    [LoginView].[Mobile] AS [Mobile], 
+    [LoginView].[Type] AS [Type], 
+    [LoginView].[Status] AS [Status], 
+    [LoginView].[AuthCode] AS [AuthCode], 
+    [LoginView].[Mobile2] AS [Mobile2], 
+    [LoginView].[UserType] AS [UserType]
+    FROM [dbo].[LoginView] AS [LoginView]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_tbl_Gatekeeper_tbl_Administrator" Association="Self.FK_tbl_Gatekeeper_tbl_Administrator">
+      <End Role="tbl_Administrator" EntitySet="tbl_Administrator" />
+      <End Role="tbl_Gatekeeper" EntitySet="tbl_Gatekeeper" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Payment_tbl_Administrator" Association="Self.FK_tbl_Payment_tbl_Administrator">
+      <End Role="tbl_Administrator" EntitySet="tbl_Administrator" />
+      <End Role="tbl_Payment" EntitySet="tbl_Payment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_StaffUser_tbl_Administrator" Association="Self.FK_tbl_StaffUser_tbl_Administrator">
+      <End Role="tbl_Administrator" EntitySet="tbl_Administrator" />
+      <End Role="tbl_StaffUser" EntitySet="tbl_StaffUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Visitor_tbl_Administrator" Association="Self.FK_tbl_Visitor_tbl_Administrator">
+      <End Role="tbl_Administrator" EntitySet="tbl_Administrator" />
+      <End Role="tbl_Visitor" EntitySet="tbl_Visitor" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

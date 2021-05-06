@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GatekeeperrrrModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbl_Administrator">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PackageId" Type="Int32" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Country" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="ZipCode" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="AdminId" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="AuthCode" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tbl_Gatekeeper" Relationship="Self.FK_tbl_Gatekeeper_tbl_Administrator" FromRole="tbl_Administrator" ToRole="tbl_Gatekeeper" />
+    <NavigationProperty Name="tbl_Payment" Relationship="Self.FK_tbl_Payment_tbl_Administrator" FromRole="tbl_Administrator" ToRole="tbl_Payment" />
+    <NavigationProperty Name="tbl_StaffUser" Relationship="Self.FK_tbl_StaffUser_tbl_Administrator" FromRole="tbl_Administrator" ToRole="tbl_StaffUser" />
+    <NavigationProperty Name="tbl_Visitor" Relationship="Self.FK_tbl_Visitor_tbl_Administrator" FromRole="tbl_Administrator" ToRole="tbl_Visitor" />
+  </EntityType>
+  <EntityType Name="tbl_country">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="country_id" Type="Int32" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="iso_code_2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="iso_code_3" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="address_format" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="postcode_required" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbl_Gatekeeper">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdminId" Type="Int32" Nullable="false" />
+    <Property Name="GatekeeperId" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Country" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ZipCode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AuthCode" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_Administrator" Relationship="Self.FK_tbl_Gatekeeper_tbl_Administrator" FromRole="tbl_Gatekeeper" ToRole="tbl_Administrator" />
+  </EntityType>
+  <EntityType Name="tbl_Payment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdminId" Type="Int32" Nullable="false" />
+    <Property Name="AdminAppId" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PaymentId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Guid" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Token" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PayerID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Amount" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_Administrator" Relationship="Self.FK_tbl_Payment_tbl_Administrator" FromRole="tbl_Payment" ToRole="tbl_Administrator" />
+  </EntityType>
+  <EntityType Name="tbl_StaffUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StaffId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="AdminId" Type="Int32" />
+    <Property Name="StaffName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile1" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile2" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Comment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="UserType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Designation" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="OTP" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="AuthCode" Type="Guid" />
+    <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_Administrator" Relationship="Self.FK_tbl_StaffUser_tbl_Administrator" FromRole="tbl_StaffUser" ToRole="tbl_Administrator" />
+  </EntityType>
+  <EntityType Name="tbl_state">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="zone_id" Type="Int32" />
+    <Property Name="country_id" Type="Int32" />
+    <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbl_Visitor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdminId" Type="Int32" />
+    <Property Name="VisitorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="VisitorType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TotalVisitor" Type="Int32" />
+    <Property Name="WhomToVisit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="VhicleType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="VhicleNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="TimeIn" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="TimeOut" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="StaffId" Type="Int32" />
+    <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="OTP" Type="Int32" />
+    <Property Name="Purpose" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="GatekeeperId" Type="Int32" />
+    <NavigationProperty Name="tbl_Administrator" Relationship="Self.FK_tbl_Visitor_tbl_Administrator" FromRole="tbl_Visitor" ToRole="tbl_Administrator" />
+  </EntityType>
+  <Association Name="FK_tbl_Gatekeeper_tbl_Administrator">
+    <End Role="tbl_Administrator" Type="Self.tbl_Administrator" Multiplicity="1" />
+    <End Role="tbl_Gatekeeper" Type="Self.tbl_Gatekeeper" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Administrator">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_Gatekeeper">
+        <PropertyRef Name="AdminId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Payment_tbl_Administrator">
+    <End Role="tbl_Administrator" Type="Self.tbl_Administrator" Multiplicity="1" />
+    <End Role="tbl_Payment" Type="Self.tbl_Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Administrator">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_Payment">
+        <PropertyRef Name="AdminId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_StaffUser_tbl_Administrator">
+    <End Role="tbl_Administrator" Type="Self.tbl_Administrator" Multiplicity="0..1" />
+    <End Role="tbl_StaffUser" Type="Self.tbl_StaffUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Administrator">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_StaffUser">
+        <PropertyRef Name="AdminId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Visitor_tbl_Administrator">
+    <End Role="tbl_Administrator" Type="Self.tbl_Administrator" Multiplicity="0..1" />
+    <End Role="tbl_Visitor" Type="Self.tbl_Visitor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Administrator">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_Visitor">
+        <PropertyRef Name="AdminId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GatekeeperrrrEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_Administrator" EntityType="Self.tbl_Administrator" />
+    <EntitySet Name="tbl_country" EntityType="Self.tbl_country" />
+    <EntitySet Name="tbl_Gatekeeper" EntityType="Self.tbl_Gatekeeper" />
+    <EntitySet Name="tbl_Payment" EntityType="Self.tbl_Payment" />
+    <EntitySet Name="tbl_StaffUser" EntityType="Self.tbl_StaffUser" />
+    <EntitySet Name="tbl_state" EntityType="Self.tbl_state" />
+    <EntitySet Name="tbl_Visitor" EntityType="Self.tbl_Visitor" />
+    <AssociationSet Name="FK_tbl_Gatekeeper_tbl_Administrator" Association="Self.FK_tbl_Gatekeeper_tbl_Administrator">
+      <End Role="tbl_Administrator" EntitySet="tbl_Administrator" />
+      <End Role="tbl_Gatekeeper" EntitySet="tbl_Gatekeeper" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Payment_tbl_Administrator" Association="Self.FK_tbl_Payment_tbl_Administrator">
+      <End Role="tbl_Administrator" EntitySet="tbl_Administrator" />
+      <End Role="tbl_Payment" EntitySet="tbl_Payment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_StaffUser_tbl_Administrator" Association="Self.FK_tbl_StaffUser_tbl_Administrator">
+      <End Role="tbl_Administrator" EntitySet="tbl_Administrator" />
+      <End Role="tbl_StaffUser" EntitySet="tbl_StaffUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Visitor_tbl_Administrator" Association="Self.FK_tbl_Visitor_tbl_Administrator">
+      <End Role="tbl_Administrator" EntitySet="tbl_Administrator" />
+      <End Role="tbl_Visitor" EntitySet="tbl_Visitor" />
+    </AssociationSet>
+    <FunctionImport Name="sp_GetStaffByNameAndMobile" ReturnType="Collection(GatekeeperrrrModel.sp_GetStaffByNameAndMobile_Result)">
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="AdminId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GetVisitorByStaffId" ReturnType="Collection(GatekeeperrrrModel.sp_GetVisitorByStaffId_Result)">
+      <Parameter Name="Date" Mode="In" Type="String" />
+      <Parameter Name="StaffId" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GetVisitorsByDate" ReturnType="Collection(GatekeeperrrrModel.sp_GetVisitorsByDate_Result)">
+      <Parameter Name="Date" Mode="In" Type="String" />
+      <Parameter Name="AdminId" Mode="In" Type="Int32" />
+      <Parameter Name="GatekeeperId" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GetVisitorsForAdmin" ReturnType="Collection(GatekeeperrrrModel.sp_GetVisitorsForAdmin_Result)">
+      <Parameter Name="Date" Mode="In" Type="String" />
+      <Parameter Name="VisitorName" Mode="In" Type="String" />
+      <Parameter Name="VehicleNumber" Mode="In" Type="String" />
+      <Parameter Name="AdminId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="tbl_Package" EntityType="GatekeeperrrrModel.tbl_Package" />
+    <FunctionImport Name="sp_GetTotalVisitorForToday" ReturnType="Collection(Int32)">
+      <Parameter Name="Date" Mode="In" Type="String" />
+      <Parameter Name="AdminId" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="LoginViews" EntityType="GatekeeperrrrModel.LoginView" />
+    <FunctionImport Name="sp_GetStaffByGatekeeperId" ReturnType="Collection(GatekeeperrrrModel.sp_GetStaffByGatekeeperId_Result)">
+      <Parameter Name="GatekeeperId" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_GetStaffByNameAndMobile_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="StaffId" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="AdminId" Nullable="true" />
+    <Property Type="String" Name="StaffName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Mobile1" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="Mobile2" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="State" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ZipCode" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Comment" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="UserType" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Designation" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="OTP" Nullable="true" MaxLength="10" />
+    <Property Type="Guid" Name="AuthCode" Nullable="true" />
+    <Property Type="String" Name="Password" Nullable="true" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="sp_GetVisitorByStaffId_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="AdminId" Nullable="true" />
+    <Property Type="String" Name="VisitorName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="VisitorType" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="TotalVisitor" Nullable="true" />
+    <Property Type="String" Name="WhomToVisit" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="VhicleType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="VhicleNumber" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="TimeIn" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="TimeOut" Nullable="true" MaxLength="20" />
+    <Property Type="DateTime" Name="Date" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Image" Nullable="true" />
+    <Property Type="Int32" Name="StaffId" Nullable="true" />
+    <Property Type="String" Name="Mobile" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="40" />
+    <Property Type="Int32" Name="OTP" Nullable="true" />
+    <Property Type="String" Name="Purpose" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="GatekeeperId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_GetVisitorsByDate_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="AdminId" Nullable="true" />
+    <Property Type="String" Name="VisitorName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="VisitorType" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="TotalVisitor" Nullable="true" />
+    <Property Type="String" Name="WhomToVisit" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="VhicleType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="VhicleNumber" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="TimeIn" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="TimeOut" Nullable="true" MaxLength="20" />
+    <Property Type="DateTime" Name="Date" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Image" Nullable="true" />
+    <Property Type="Int32" Name="StaffId" Nullable="true" />
+    <Property Type="String" Name="Mobile" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="40" />
+    <Property Type="Int32" Name="OTP" Nullable="true" />
+    <Property Type="String" Name="Purpose" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="GatekeeperId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_GetVisitorsForAdmin_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="AdminId" Nullable="true" />
+    <Property Type="String" Name="VisitorName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="VisitorType" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="TotalVisitor" Nullable="true" />
+    <Property Type="String" Name="WhomToVisit" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="VhicleType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="VhicleNumber" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="TimeIn" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="TimeOut" Nullable="true" MaxLength="20" />
+    <Property Type="DateTime" Name="Date" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Image" Nullable="true" />
+    <Property Type="Int32" Name="StaffId" Nullable="true" />
+    <Property Type="String" Name="Mobile" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="40" />
+    <Property Type="Int32" Name="OTP" Nullable="true" />
+    <Property Type="String" Name="Purpose" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="GatekeeperId" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="tbl_Package">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PackageName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="NoOfVisitorSupported" Type="Double" Nullable="false" />
+    <Property Name="HalfYearlyPrice" Type="Double" Nullable="false" />
+    <Property Name="AnnuallyPrice" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LoginView">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="PackageOrAdminId" Type="Int32" />
+    <Property Name="SName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="AuthCode" Type="Guid" />
+    <Property Name="Mobile2" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="UserType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="sp_GetStaffByGatekeeperId_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="StaffName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>
